@@ -9,14 +9,32 @@
 </head>
 
 <body>
-    <main>
-        <h1>I have been seen {{ count }} times.</h1>
-        <ul>
-            {% for i in range(1, count+1) %}
-            <li>{{ i }}: Hello {{ name }}! </li>
-            {% endfor %}
-        </ul>
-    </main>
-</body>
 
+<header>
+    <h1>My Website</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/titanic">Titanic</a>
+        <a href="https://github.com/GokanGorer">About</a>
+    </nav>
+</header>
+
+<main>
+    <h2>I have been seen {{ count }} times.</h2>
+    <ul>
+        {% for i in range(1, count+1) %}
+        <li>{{ i }}: Hello {{ name }}! </li>
+        {% endfor %}
+    </ul>
+
+    <p><a href="https://www.hwr-berlin.de/">Visit HWR Berlin</a></p>
+
+    <img src="{{ url_for('static', filename='shrek.webp') }}" alt="shrek" width="300">
+</main>
+
+<footer>
+    <p>Created by Gökan, big man ting ya heaaardd</p>
+</footer>
+
+</body>
 </html>
