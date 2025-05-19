@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Titanic</title>
+    <link rel="stylesheet" href="https://simplecss.org/simple.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Titanic Dataset</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/titanic">Titanic</a>
+        <a href="https://github.com/GokanGorer">About</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Preview of Titanic Dataset</h2>
+    {{ table|safe }}
+
+    <h2>Survivors by Gender</h2>
+    <canvas id="genderChart" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('genderChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Women', 'Men'],
+                datasets: [{
+                    label: 'Survivors',
+                    data: [{{ gender_counts.get('female', 0) }}, {{ gender_counts.get('male', 0) }}],
+                    backgroundColor: ['#ff6384', '#36a2eb']
+                }]
+            }
+        });
+    </script>
+</main>
+
+<footer>
+    <p>Created by Gökan Görer, Bossman ting ya heaaardd</p>
+</footer>
+
+</body>
+</html>
