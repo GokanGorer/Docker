@@ -12,9 +12,9 @@ redis_host = os.getenv('REDIS_HOST')
 redis_password = os.getenv('REDIS_PASSWORD')
 
 if redis_password:
-    cache = redis.Redis(host=redis_host, port=80, password=redis_password)
+    cache = redis.Redis(host=redis_host, port=6379, password=redis_password)
 else:
-    cache = redis.Redis(host=redis_host, port=80)
+    cache = redis.Redis(host=redis_host, port=6379)
 
 app = Flask(__name__)
 
