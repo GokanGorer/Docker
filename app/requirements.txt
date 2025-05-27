@@ -2,3 +2,4 @@ Flask
 Redis
 python-dotenv
 pandas
+gunicorn

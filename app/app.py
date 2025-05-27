@@ -4,9 +4,18 @@ from flask import Flask, render_template
 import os
 from dotenv import load_dotenv
 import pandas as pd
+print("REDIS_HOST:", os.getenv('REDIS_HOST'))
+print("REDIS_PASSWORD:", os.getenv('REDIS_PASSWORD'))
 
 load_dotenv() 
-cache = redis.Redis(host=os.getenv('REDIS_HOST'), port=6379,  password=os.getenv('REDIS_PASSWORD'))
+redis_host = os.getenv('REDIS_HOST')
+redis_password = os.getenv('REDIS_PASSWORD')
+
+if redis_password:
+    cache = redis.Redis(host=redis_host, port=80, password=redis_password)
+else:
+    cache = redis.Redis(host=redis_host, port=80)
+
 app = Flask(__name__)
 
 def get_hit_count():

@@ -17,4 +17,4 @@ COPY app/ /app
 EXPOSE 80
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]
